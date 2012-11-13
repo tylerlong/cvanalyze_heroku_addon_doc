@@ -2,9 +2,13 @@
 
 CV Analyzing (also known as Resume Analyzing, CV Parsing, Resume Parsing, CV Extraction, Resume Extraction) is the conversion of free-form resume into structured information suitable for storage, reporting and manipulation by a computer.
 
-CV Analyze simultaneously and automatically converts every CV/social media profile into a complete candidate profile in your own system, saving up to 99.9% time in the administrative processing of applications.
+CV Analyze simultaneously and automatically converts every CV/social media profile into a complete candidate profile in your own system, saving up to 99.9% time in the administrative processing of applications. Here is the website for CV Analyze: http://www.cvanalyze.com
 
 CV Analyze is accessible via a restful API and has supported client libraries for Ruby, Python, Java, Node.js, Scala, Play!, Grails, Clojure...etc.
+
+## Notice
+
+CV Analyze currently ONLY support Chinese Resumes! We will support English resumes in the near future!
 
 ## Provisioning the add-on
 
@@ -22,7 +26,7 @@ Once CV Analyze has been added a `CVANALYZE_URL` setting will be available in th
 
     :::term
     $ heroku config:get CVANALYZE_URL
-    http://www.cvanalyze.com/resources/7761b044e6ff01ddcec0e7f2e66d2bf137553eebb76a3f5248ecb68e2e2d0e3f
+    https://www.cvanalyze.com/resources/7761b044e6ff01ddcec0e7f2e66d2bf137553eebb76a3f5248ecb68e2e2d0e3f
 
 After installing CV Analyze the application should be configured to fully integrate with the add-on.
 
@@ -58,23 +62,18 @@ Credentials and other sensitive configuration values should not be committed to 
 ## Using with Ruby/Rails
 
     #coding=utf-8
-
     require "rest_client"
     require "json"
 
     url = ENV["CVANALYZE_URL"]
     resume_content = "刘春涛 男 28岁 南京大学 软件工程专业 6年工作经验"
-
     response = RestClient.post url, content: resume_content
-    candidate = JSON.load(response.to_str.force_encoding("utf-8"))
-    puts JSON.pretty_generate(candidate).strip
+    puts response.to_str
 
 ## Using with Python / Django
 
     #coding=utf-8
-
-    import os
-    import urllib
+    import os, urllib
 
     resume_content = '刘春涛 男 28岁 南京大学 软件工程专业 6年工作经验'
     params = urllib.urlencode({'content': resume_content})
@@ -82,6 +81,7 @@ Credentials and other sensitive configuration values should not be committed to 
     print f.read()
 
 ## Using with CSharp
+
     using RestSharp;
     ...
     var restClient = new RestClient(CVANALYZE_URL)
@@ -91,7 +91,7 @@ Credentials and other sensitive configuration values should not be committed to 
     var response = restClient.Execute(request);
     Console.WriteLine(response.content);
 
-## Using other Languages
+## Using with other programming languages
 
 We provide standard restful interface. Just HTTP Post the content of the resume to CVANALYZE_URL using any programming language you like.
 
@@ -131,4 +131,4 @@ CV Analyze can be removed via the  CLI.
 
 ## Support
 
-All CV Analyze support and runtime issues should be submitted via on of the [Heroku Support channels](support-channels). Any non-support related issues or product feedback is welcome at http://en.cvanalyze.com/contact.
+All CV Analyze support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels). Any non-support related issues or product feedback is welcome at http://en.cvanalyze.com/contact. Or just drop us an email: service@cvanalyze.com.
