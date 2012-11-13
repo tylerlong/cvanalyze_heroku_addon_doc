@@ -32,8 +32,6 @@ After installing CV Analyze the application should be configured to fully integr
 
 ## Local setup
 
-### Environment setup
-
 After provisioning the add-on it’s necessary to locally replicate the config vars so your development environment can operate against the service.
 
 <div class="callout" markdown="1">
@@ -49,8 +47,6 @@ Use [Foreman](config-vars#local_setup) to reliably configure and run the process
 <p class="warning" markdown="1">
 Credentials and other sensitive configuration values should not be committed to source-control. In Git exclude the .env file with: `echo .env >> .gitignore`.
 </p>
-
-### Service setup
 
 ## Using with HTML
 
